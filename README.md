@@ -10,9 +10,11 @@
       - [Install on Windows](#install-on-windows)
       - [Update on Windows](#update-on-windows)
       - [Themes](#themes)
+      - [Setup on Windows](#setup-on-windows)
     - [Oh My Posh Installation on macOS](#oh-my-posh-installation-on-macos)
       - [Install on macOS](#install-on-macos)
       - [Update on macOS](#update-on-macos)
+      - [Setup Theme on macOS](#setup-theme-on-macos)
     - [Oh My Posh Installation on Linux](#oh-my-posh-installation-on-linux)
       - [Install on Linux](#install-on-linux)
       - [Update on Linux](#update-on-linux)
@@ -80,6 +82,8 @@ In order to "Pimp your Terminal" we are going to use a tool called "Oh My Posh",
 
 ### Oh My Posh Installation on Windows
 
+In order to install Oh My Posh on Windows you will need winget.
+
 #### Install on Windows
 
 `winget install oh-my-posh`
@@ -92,7 +96,18 @@ In order to "Pimp your Terminal" we are going to use a tool called "Oh My Posh",
 
 `POSH_THEMES_PATH`
 
+#### Setup on Windows
+
+```powershell
+oh-my-posh --init --shell pwsh --config $env:POSH_THEMES_PATH/montys.omp.json | Invoke-Expression
+
+Import-Module -Name Terminal-Icons
+#Themes: jandedobbeleer, sonicboom_light, paradox, montys, mojada, gmay, cloud-native-azure, agnosterplus
+```
+
 ### Oh My Posh Installation on macOS
+
+In order to install Oh My Posh on Windows you will need brew.
 
 #### Install on macOS
 
@@ -101,6 +116,17 @@ In order to "Pimp your Terminal" we are going to use a tool called "Oh My Posh",
 #### Update on macOS
 
 `brew update && brew upgrade oh-my-posh`
+
+#### Setup Theme on macOS
+
+```bash
+# Enable theme
+if [ $TERM_PROGRAM != "Apple_Terminal" ]; then
+   # Themes directory: $(brew --prefix oh-my-posh)/themes
+   # Change theme: montys.omp.json
+   eval "$(oh-my-posh init zsh --config /usr/local/opt/oh-my-posh/themes/atomic.omp.json)"
+fi
+```
 
 ### Oh My Posh Installation on Linux
 
